@@ -1,0 +1,18 @@
+.chat-window{
+    background-color: aquamarine;
+    width: 400px;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#outputArea{
+    background-color: lightblue;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
