@@ -34,17 +34,14 @@ async function getGeneratedText() {
       }
       // Massage and parse the chunk of data
       const chunk = decoder.decode(value);
-      const lines = chunk.split("\\n");
+      const lines = chunk.split("\n");
+      console.log("lines")
       console.log(lines)
       const parsedLines = lines
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
-        .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
-        .map((line) => JSON.parse(line)); // Parse the JSON string
+        .filter((line) => line !== "" && line !== "[DONE]"); // Remove empty lines and "[DONE]"
       for (const parsedLine of parsedLines) {
-        const { choices } = parsedLine;
-        const { delta } = choices[0];
-        const { content } = delta;
-        // Update the UI with the new content
+        const content = JSON.parse(parsedLine).choices[0].delta.content
         if (content) {
           outputArea.innerText += content;
         }
