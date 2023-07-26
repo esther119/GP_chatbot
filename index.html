@@ -13,25 +13,25 @@
 <body>
     <div class="main">
         <h3>Alf AI</h3>
-        <p class="main--subtitles"> Hi, I'm your financial literacy chatbot. How can I help you today?
+        <p class="main--subtitles"> Hi, I'm your financial literacy chatbot. How can I help you today?</p>
         <p class="main--subtitles"> Things I am good at:</p>
-            <ul>
-                <li>Explaining and translating complicated financial language into simple terms.</li>
-                <li>Explaining considerations that you should take in your financial life.</li>
-            </ul>
-            <p class="main--subtitles">Things I am not good at:</p>
-            <ul>
-                <li>Giving financial advice of what you should do.</li>
-            </ul>
+        <ul>
+            <li>Explaining and translating complicated financial language into simple terms.</li>
+            <li>Explaining considerations that you should take in your financial life.</li>
+        </ul>
+        <p class="main--subtitles">Things I am not good at:</p>
+        <ul>
+            <li>Giving financial advice of what you should do.</li>
+        </ul>
         </p>
-        <div class="input-area">
-            <textarea id="prompt-input" placeholder="Ask me about personal finance" onkeydown="checkSubmit(event)"></textarea>
-            <button onclick="getGeneratedText()"><img src="./send.png"/></button>
+        <div class="chat-window">
+            <textarea id="promptInput" placeholder="Ask me about personal finance"
+                onkeydown="checkSubmit(event)"></textarea>
+            <button onclick="getGeneratedText()" id="prompt-submit-button"><img src="./send.png" /></button>
         </div>
+        <div id="outputArea"></div>
     </div>
 </body>
 <script src="index.js"></script>
 
 </html>
-
-<!--             <h1>OpenAI GPT-3 API Example</h1> -->

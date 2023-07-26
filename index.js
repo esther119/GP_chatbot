@@ -1,8 +1,7 @@
 async function getGeneratedText() {
   const promptInput = document.getElementById('promptInput').value;
-  console.log("promptInput")
   console.log(promptInput)
-  const apiKey = ''; // Replace with your actual OpenAI API key
+  const apiKey = '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'; // Replace with your actual OpenAI API key
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -34,17 +33,14 @@ async function getGeneratedText() {
       }
       // Massage and parse the chunk of data
       const chunk = decoder.decode(value);
-      const lines = chunk.split("\\n");
+      const lines = chunk.split("\n");
+      console.log("lines")
       console.log(lines)
       const parsedLines = lines
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
-        .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
-        .map((line) => JSON.parse(line)); // Parse the JSON string
+        .filter((line) => line !== "" && line !== "[DONE]"); // Remove empty lines and "[DONE]"
       for (const parsedLine of parsedLines) {
-        const { choices } = parsedLine;
-        const { delta } = choices[0];
-        const { content } = delta;
-        // Update the UI with the new content
+        const content = JSON.parse(parsedLine).choices[0].delta.content
         if (content) {
           outputArea.innerText += content;
         }
@@ -60,7 +56,7 @@ async function getGeneratedText() {
 
 function checkSubmit(event) {
   if (event.keyCode === 13) {
-      event.preventDefault();
-      document.getElementById("prompt-submit-button").click();
+    event.preventDefault();
+    getGeneratedText(); // Call the function directly
   }
 }
