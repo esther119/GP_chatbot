@@ -1,6 +1,5 @@
 async function getGeneratedText() {
   const promptInput = document.getElementById('promptInput').value;
-  console.log("promptInput")
   console.log(promptInput)
   const apiKey = ''; // Replace with your actual OpenAI API key
 
