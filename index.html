@@ -2,20 +2,36 @@
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>Personal Finance AI</title>
+    <link rel="icon" type="image/x-icon" href="./finance.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <h1>Welcome to chatbot</h1>
-    <p>Please ask your question in box below</p>
-    <div class="chat-window">
-        <h1>OpenAI GPT-3 API Example</h1>
-        <textarea id="promptInput" placeholder="Enter your prompt here"></textarea>
-        <button onclick="getGeneratedText()">Generate Text</button>
-        <div id="outputArea"></div>
+    <div class="main">
+        <h3>Alf AI</h3>
+        <p class="main--subtitles"> Hi, I'm your financial literacy chatbot. How can I help you today?
+        <p class="main--subtitles"> Things I am good at:</p>
+            <ul>
+                <li>Explaining and translating complicated financial language into simple terms.</li>
+                <li>Explaining considerations that you should take in your financial life.</li>
+            </ul>
+            <p class="main--subtitles">Things I am not good at:</p>
+            <ul>
+                <li>Giving financial advice of what you should do.</li>
+            </ul>
+        </p>
+        <div class="input-area">
+            <textarea id="prompt-input" placeholder="Ask me about personal finance" onkeydown="checkSubmit(event)"></textarea>
+            <button onclick="getGeneratedText()"><img src="./send.png"/></button>
+        </div>
     </div>
 </body>
 <script src="index.js"></script>
 
 </html>
+
+<!--             <h1>OpenAI GPT-3 API Example</h1> -->
