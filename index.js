@@ -34,14 +34,17 @@ async function getGeneratedText() {
       }
       // Massage and parse the chunk of data
       const chunk = decoder.decode(value);
-      const lines = chunk.split("\n");
-      console.log("lines")
+      const lines = chunk.split("\\n");
       console.log(lines)
       const parsedLines = lines
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
-        .filter((line) => line !== "" && line !== "[DONE]"); // Remove empty lines and "[DONE]"
+        .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
+        .map((line) => JSON.parse(line)); // Parse the JSON string
       for (const parsedLine of parsedLines) {
-        const content = JSON.parse(parsedLine).choices[0].delta.content
+        const { choices } = parsedLine;
+        const { delta } = choices[0];
+        const { content } = delta;
+        // Update the UI with the new content
         if (content) {
           outputArea.innerText += content;
         }
@@ -52,5 +55,12 @@ async function getGeneratedText() {
     console.error('Error:', error);
     const outputArea = document.getElementById('outputArea');
     outputArea.innerText = 'An error occurred while processing the response.';
+  }
+}
+
+function checkSubmit(event) {
+  if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("prompt-submit-button").click();
   }
 }
