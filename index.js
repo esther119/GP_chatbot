@@ -1,7 +1,7 @@
 async function getGeneratedText() {
   const promptInput = document.getElementById('promptInput').value;
   console.log(promptInput)
-  const apiKey = ''; // Replace with your actual OpenAI API key
+  const apiKey = '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'; // Replace with your actual OpenAI API key
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -51,5 +51,12 @@ async function getGeneratedText() {
     console.error('Error:', error);
     const outputArea = document.getElementById('outputArea');
     outputArea.innerText = 'An error occurred while processing the response.';
+  }
+}
+
+function checkSubmit(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    getGeneratedText(); // Call the function directly
   }
 }
